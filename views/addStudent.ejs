@@ -1,0 +1,54 @@
+<!-- add student with its details page -->
+<div class="container border mt-4">
+    <h2 class="text-center mb-4">Add New Student</h2>
+    <div class="row justify-content-center" style="width:80%; margin:auto;">
+      <div class="col-md-6">
+        <form action="/employee/addstudent" method="POST">
+          <div class="form-group m-3">
+            <label for="batch">Batch Details</label>
+            <input id="batch" type="text" name="batch" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="name">Student Name</label>
+            <input id="name" type="text" name="name" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="college">College</label>
+            <input id="college" type="text" name="college" class="form-control" required>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group m-3">
+            <label for="DSA_FinalScore">DSA Score</label>
+            <input id="DSA_FinalScore" type="text" name="DSA_FinalScore" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="WebD_FinalScore">WebD Score</label>
+            <input id="WebD_FinalScore" type="text" name="WebD_FinalScore" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="React_FinalScore">React Final Score</label>
+            <input id="React_FinalScore" type="text" name="React_FinalScore" class="form-control" required>
+          </div>
+          <div class="form-group m-3">
+            <label for="status">Placement Status</label>
+            <select id="status" name="status" class="form-control" required>
+              <option selected value="not placed">Not Placed</option>
+              <option value="placed">Placed</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <button type="submit" style="width:70%; margin:10%;"class="btn btn-outline-dark">Submit</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+  

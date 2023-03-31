@@ -1,0 +1,85 @@
+<!-- employee dashboard with list of students and interviews they are enrolled in -->
+<div class="border mt-5" style="width:80%; margin:auto;">
+ <h2 class="text-center m-3">List of Students</h2>
+<div style="width:70%; margin-left:14%;" class="accordion accordion-flush">
+    <% for( var i = 0 ; i< studentsList.length ; i++ ){ %>
+    <div class="accordion-item my-3 border border-1 rounded">
+      <h1 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= studentsList[i]._id %>" aria-expanded="true" aria-controls="collapse<%= studentsList[i]._id %>">
+            <span class="fw-semibold text-capitalize"><%= studentsList[i].name %></span>
+        </button>
+      </h1>
+      <div id="collapse<%= studentsList[i]._id %>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th>Name</th>
+                    <td><%= studentsList[i].name %></td>
+                  </tr>
+                  <tr>
+                    <th>Batch</th>
+                    <td><%= studentsList[i].batch %></td>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
+                    <td><%= studentsList[i].email %></td>
+                  </tr>
+                  <tr>
+                    <th>College</th>
+                    <td><%= studentsList[i].college %></td>
+                  </tr>
+                  <tr>
+                    <th>Placement Status</th>
+                    <td><%= studentsList[i].status %></td>
+                  </tr>
+                  <tr>
+                    <th>DSA Final Score</th>
+                    <td><%= studentsList[i].DSA_FinalScore %></td>
+                  </tr>
+                  <tr>
+                    <th>WebD Final Score</th>
+                    <td><%= studentsList[i].WebD_FinalScore %></td>
+                  </tr>
+                  <tr>
+                    <th>React Final Score</th>
+                    <td><%= studentsList[i].React_FinalScore %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- edit or delete student -->
+              <div class="text-center flex">
+                <a href="/employee/editStudentPage/<%= studentsList[i]._id %>" class="btn btn-primary btn-xs mx-5">Edit Student</a>
+                <a href="/employee/deleteStudent/<%= studentsList[i]._id %>" class="btn btn-danger btn-xs">Delete Student</a>
+              </div>
+              <div
+              class="mt-3 d-flex border-top flex-column align-items-center"
+              style="width: 100%"
+            >
+             <!-- list of interviews they are in -->
+              <h3 class="mt-2">Interviews</h3>
+              <table style="width: 100%">
+                <thead>
+                  <tr>
+                    <th scope="col">Company</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(interview of studentsList[i].interviews) { %>
+                  <tr class="text-capitalize">
+                    <td><%= interview.companyName %></td>
+                    <td><%= interview.date %></td>
+                    <td><%= interview.result %></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+</div>

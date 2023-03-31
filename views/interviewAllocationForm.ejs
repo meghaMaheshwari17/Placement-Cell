@@ -1,0 +1,16 @@
+<!-- to create an interview -->
+<h3 class="text-center m-3">Create an Interview in a Company</h3>
+<div class="container my-3 border p-3" style="width:30%;">
+    <form action="/student/interview_creation" method="POST">
+      <div class="mb-3">
+        <label for="companyName" class="form-label">Company Name</label>
+        <input id="companyName" type="text" name="companyName" class="form-control" placeholder="Enter Company Name" required>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date of Interview</label>
+        <input id="date" type="date" name="date" class="form-control" placeholder="Enter Date of Interview" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

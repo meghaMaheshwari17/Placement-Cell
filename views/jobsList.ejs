@@ -1,0 +1,30 @@
+<!-- to display jobs available through api -->
+<div class="container">
+    <h1 class="text-center mt-5">Jobs Available</h1>
+    <div class="row">
+      <% for(var i=0 ; i< jobs.length ; i++) { %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <img style="width:35%; margin:auto;" src="<%= jobs[i].company_logo %>" class="card-img-top mt-2" alt="Company Logo">
+          <div class="card-body">
+            <h5 class="card-title"><%= jobs[i].title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%=jobs[i].company_name %></h6>
+            <div class="mt-2">
+              <p><span class="font-weight-bold">Job Type:</span> <%= jobs[i].job_type %></p>
+              <p><span class="font-weight-bold">Publication Date:</span> <%= jobs[i].publication_date %></p>
+              <p><span class="font-weight-bold">Location:</span> <%= jobs[i].candidate_required_location %></p>
+              <% if(jobs[i].salary.length>0) {%>
+              <p><span class="font-weight-bold">Salary:</span> <%= jobs[i].salary %></p>
+              <%}else { %>
+              <p><span class="font-weight-bold">Salary:</span>Based on candidate's performance</p>
+              <%}%>
+            </div>
+            <a href="<%= jobs[i].url %>" target="_blank" class="btn btn-primary mt-3">Apply</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,118 @@
+<!-- displaying all the interviews with students allocated in it -->
+<div class="border mt-5" style="width:80%; margin:auto;">  
+  <div class="text-center">
+    <a class="btn btn-outline-dark m-4" href="/student/interview_form">Schedule an Interview</a>
+  </div>
+    <h3 class="text-center m-3">Scheduled Interviews</h3>   
+    <div style="width:70%; margin-left:14%;" class="accordion">
+        <% for( var i = 0 ; i< interviewList.length ; i++ ){ %>
+        <div class="accordion-item my-2 border border-1 rounded">
+          <h1 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=interviewList[i]._id %> " aria-expanded="true" aria-controls="collapse<%=interviewList[i]._id %>">
+                <span class="fw-semibold text-capitalize"><%= interviewList[i].companyName %></span>
+            </button>
+          </h1>
+          <div id="collapse<%=interviewList[i]._id %>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Company Name</th>
+                        <td><%= interviewList[i].companyName %></td>
+                      </tr>
+                      <tr>
+                        <th>Date</th>
+                        <td><%= interviewList[i].date %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div
+                  class="mt-3 d-flex border-top flex-column align-items-center"
+                  style="width: 100%"
+                >
+                  <h5 class="mt-2">Enroll a student in <%= interviewList[i].companyName %></h5>
+                 <!-- form to add a student in the interview -->
+                  <form
+                class="container-fluid"
+                action="/student/addStudentToInterview" 
+                method="POST"
+                style="width: 80%"
+              >
+                <div class="mb-3">
+                  <label for="student_email" class="form-label"
+                    >Student email</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="student_email"
+                    aria-describedby="emailHelp"
+                    name="email"
+                    required
+                  />
+                  <input
+                  type="hidden"
+                  class="form-control"
+                  id="company_name"
+                  name="company_name"
+                  value="<%= interviewList[i].companyName %>"
+                  required
+                />
+                <input
+                  type="hidden"
+                  class="form-control"
+                  id="date"
+                  name="date"
+                  value="<%= interviewList[i].date %>"
+                  required
+                />
+                </div>
+                <div class="mb-3">
+                  <label for="result" class="form-label">Result</label>
+                  <select
+                    id="result"
+                    class="form-select"
+                    name="result"
+                    required
+                  >
+                    <option value="PASS" selected>PASS</option>
+                    <option value="FAIL">FAIL</option>
+                    <option value="On Hold">On Hold</option>
+                    <option value="Didn't attempt">Didn't attempt</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  &nbsp; Add &nbsp;
+                </button>
+              </form>
+              <!-- students already enrolled in that interview -->
+              <h5 class="mt-2">Enrolled Students</h5>
+              <% for(student of interviewList[i].students) { %>
+                  <table class="table table-striped" style="width: 70%">
+                    <tbody>
+                      <tr>
+                        <th>Name</th>
+                        <td><%= student.student.name  %></td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                        <td><%= student.student.email  %></td>
+                      </tr>
+                      <tr>
+                        <th>Result</th>
+                        <td><%= student.result  %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <form action="/student/deleteStudentInterview" method="post">
+                    <input type="hidden" name="companyName" value="<%= interviewList[i].companyName %>" />
+                    <input type="hidden" name="studentId" value="<%= student.student._id  %>" />
+                    <button type="submit" class="btn btn-danger mb-3">Delete</button>
+                  </form>
+                  <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+</div>

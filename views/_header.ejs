@@ -1,0 +1,18 @@
+<!-- this is navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/employee/dashboard">Placement Cell</a>
+      <div class="collapse navbar-collapse justify-content-around" id="navbarNavAltMarkup">
+        <% if(locals.user){ %> 
+        <div class="navbar-nav justify-content-around">
+          <a class="nav-link mx-5" aria-current="page" href="/employee/dashboard">Dashboard</a>
+          <a class="nav-link mx-5" href="/employee/student">Add Student</a>
+          <a class="nav-link mx-5" href="/student/interview_page">Scheduled Interviews</a>
+          <a class="nav-link mx-5" href="/employee/download">Download CSV file</a>
+          <a class="nav-link mx-5" href="/jobs/list">Jobs Available</a>
+        </div>
+        <a class="btn btn-outline-success mx-2" href="/logout">Log Out</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
